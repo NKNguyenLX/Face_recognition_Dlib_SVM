@@ -70,8 +70,6 @@ for (i, imagePath) in enumerate(imagePaths):
 		knownEncodings.append(encoding)
 		knownNames.append(name)
 		# print(encoding)
-		# df = df.append({'Name':name,
-		# 	'Data':encoding},ignore_index=True)
 		df = df.append({'Name':name,'0':encoding[0],'1':encoding[1],'2':encoding[2],'3':encoding[3],'4':encoding[4],'5':encoding[5],'6':encoding[6],'7':encoding[7],'8':encoding[8],'9':encoding[9],
 								'10':encoding[10],'11':encoding[11],'12':encoding[12],'13':encoding[13],'14':encoding[14],'15':encoding[15],'16':encoding[16],'17':encoding[17],'18':encoding[18],'19':encoding[19],
 								'20':encoding[20],'21':encoding[21],'22':encoding[22],'23':encoding[23],'24':encoding[24],'25':encoding[25],'26':encoding[26],'27':encoding[27],'28':encoding[28],'29':encoding[29],

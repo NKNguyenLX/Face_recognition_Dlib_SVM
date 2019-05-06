@@ -37,18 +37,20 @@ import sys
 import time
 import imutils
 import dlib
+import tkinter
+import PIL.Image, PIL.ImageTk
 
 import numpy as np
 np.set_printoptions(precision=2)
 from sklearn.mixture import GMM
 import face_recognition
 from imutils.video import VideoStream
-import util
+# import util
 
-fileDir = os.path.dirname(os.path.realpath(__file__))
-modelDir = os.path.join(fileDir, '..', 'models')
-dlibModelDir = os.path.join(modelDir, 'dlib')
-openfaceModelDir = os.path.join(modelDir, 'openface')
+# fileDir = os.path.dirname(os.path.realpath(__file__))
+# modelDir = os.path.join(fileDir, '..', 'models')
+# dlibModelDir = os.path.join(modelDir, 'dlib')
+# openfaceModelDir = os.path.join(modelDir, 'openface')
 
 
 def infer(img, args):
@@ -60,7 +62,7 @@ def infer(img, args):
 
     # Face recognition
     bbs = face_recognition.face_locations(img, model=args.detectionMethod)
-    print(bbs)
+    print("Bounding box:"+str(bbs))
     reps = face_recognition.face_encodings(img, bbs)
 
     persons = []
@@ -94,33 +96,33 @@ def infer(img, args):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--dlibFacePredictor',
-        type=str,
-        help="Path to dlib's face predictor.",
-        default=os.path.join(
-            dlibModelDir,
-            "shape_predictor_68_face_landmarks.dat"))
-    parser.add_argument(
-        '--networkModel',
-        type=str,
-        help="Path to Torch network model.",
-        default=os.path.join(
-            openfaceModelDir,
-            'nn4.small2.v1.t7'))
-    parser.add_argument('--imgDim', type=int,
-                        help="Default image dimension.", default=96)
-    parser.add_argument(
-        '--captureDevice',
-        type=int,
-        default=0,
-        help='Capture device. 0 for latopinfer webcam and 1 for usb webcam')
+    # parser.add_argument(
+    #     '--dlibFacePredictor',
+    #     type=str,
+    #     help="Path to dlib's face predictor.",
+    #     default=os.path.join(
+    #         dlibModelDir,
+    #         "shape_predictor_68_face_landmarks.dat"))
+    # parser.add_argument(
+    #     '--networkModel',
+    #     type=str,
+    #     help="Path to Torch network model.",
+    #     default=os.path.join(
+    #         openfaceModelDir,
+    #         'nn4.small2.v1.t7'))
+    # parser.add_argument('--imgDim', type=int,
+    #                     help="Default image dimension.", default=96)
+    # parser.add_argument(
+    #     '--captureDevice',
+    #     type=int,
+    #     default=0,
+    #     help='Capture device. 0 for latopinfer webcam and 1 for usb webcam')
     parser.add_argument("-d", "--detectionMethod", type=str, default="cnn",
 	    help="face detection model to use: either `hog` or `cnn`")
     parser.add_argument('--width', type=int, default=320)
     parser.add_argument('--height', type=int, default=240)
     parser.add_argument('--threshold', type=float, default=0.7)
-    parser.add_argument('--cuda', action='store_true')
+    # parser.add_argument('--cuda', action='store_true')
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument(
         'classifierModel',
@@ -130,12 +132,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # align = openface.AlignDlib(args.dlibFacePredictor)
-    net = util.TorchNeuralNet(
-        args.networkModel,
-        imgDim=args.imgDim,
-        cuda= 1,
-        # cuda=args.cuda
-        )
+    # net = util.TorchNeuralNet(
+    #     args.networkModel,
+    #     imgDim=args.imgDim,
+    #     cuda= 1,
+    #     # cuda=args.cuda
+    #     )
 
     # Capture device. Usually 0 will be webcam and 1 will be usb cam.
     vs = VideoStream(src=0).start()
