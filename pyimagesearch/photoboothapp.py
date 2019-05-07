@@ -40,13 +40,13 @@ class PhotoBoothApp:
 
 		# create a button, that when pressed, will take the current
 		# frame and save it to file
-		btn = tki.Button(self.root, text="Identify",
+		btn = tki.Button(self.root, text="Identify",font='Helvetica 12',
 			command=self.takeSnapshot)
 		btn.pack(side="bottom", fill="both", expand="yes", padx=10,
 			pady=10)
 
 
-		self.label = tki.Label(self.root, text = "Person name: ")
+		self.label = tki.Label(self.root, text = "Person name: ",font='Helvetica 12')
 		self.label2 = tki.Label(self.root, text = "",font='Helvetica 14 bold')
 		self.label2.pack(side="bottom", fill="both", expand="yes", padx=10,
 			pady=2)
@@ -153,8 +153,9 @@ class PhotoBoothApp:
 		end = time.time()
 
 		# Calculate frames per second
-		fps  = 1 / (end - start)
-		print ("Estimated frames per second : {0}".format(fps))
+		# fps  = 1 / (end - start)
+		time_ = end - start
+		print ("Estimated processing time: {0}".format(time_))
 
 		if persons[i] != None:
 			# Speech name
