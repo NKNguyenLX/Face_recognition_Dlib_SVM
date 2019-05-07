@@ -35,6 +35,8 @@ class PhotoBoothApp:
 		# initialize the root window and image panel
 		self.root = tki.Tk()
 		self.panel = None
+		
+		
 
 		# create a button, that when pressed, will take the current
 		# frame and save it to file
@@ -42,6 +44,15 @@ class PhotoBoothApp:
 			command=self.takeSnapshot)
 		btn.pack(side="bottom", fill="both", expand="yes", padx=10,
 			pady=10)
+
+
+		self.label = tki.Label(self.root, text = "Person name: ")
+		self.label2 = tki.Label(self.root, text = "",font='Helvetica 14 bold')
+		self.label2.pack(side="bottom", fill="both", expand="yes", padx=10,
+			pady=2)
+		self.label.pack(side="bottom", fill="both", expand="yes", padx=10,
+			pady=2)
+		
 
 		# start a thread that constantly pools the video sensor for
 		# the most recently read frame
@@ -116,6 +127,9 @@ class PhotoBoothApp:
 		for i, c in enumerate(confidences):
 			if c <= 0.7:  # 0.5 is kept as threshold for known face.
 				persons[i] = "Unknown"
+		
+		# Update label
+		self.label2.configure(text = str(persons[i]))
 
 		# Print the person name and conf value on the frame next to the person
 		# Also print the bounding box
@@ -142,10 +156,11 @@ class PhotoBoothApp:
 		fps  = 1 / (end - start)
 		print ("Estimated frames per second : {0}".format(fps))
 
-		# Speech name
-		tts = gTTS(text=persons[0], lang='vi')
-		tts.save("name.mp3")
-		os.system("mpg321 name.mp3")
+		if persons[i] != None:
+			# Speech name
+			tts = gTTS(text=persons[0], lang='vi')
+			tts.save("name.mp3")
+			os.system("mpg321 name.mp3")
 
 	def videoLoop(self):
 		# DISCLAIMER:
