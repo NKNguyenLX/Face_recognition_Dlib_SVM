@@ -158,11 +158,11 @@ class PhotoBoothApp:
 		time_ = end - start
 		print ("Estimated processing time: {0}".format(time_))
 
-		if persons[i] != None:
+		# if persons != None:
 			# Speech name
-			tts = gTTS(text=persons[0], lang='vi')
-			tts.save("name.mp3")
-			os.system("mpg321 name.mp3")
+		tts = gTTS(text=persons[0], lang='vi')
+		tts.save("name.mp3")
+		os.system("mpg321 name.mp3")
 
 	def videoLoop(self):
 		# DISCLAIMER:
@@ -176,13 +176,30 @@ class PhotoBoothApp:
 				# have a maximum width of 320 pixels
 				self.frame = self.vs.read()
 				self.frame = imutils.resize(self.frame, width=320)
-		
+
+				persons, confidences, bbs = self.infer(self.frame)
+
+				for ((top, right, bottom, left), name) in zip(bbs, persons):
+					# rescale the face coordinates
+					r = 1
+					top = int(top * r)
+					right = int(right * r)
+					bottom = int(bottom * r)
+					left = int(left * r)
+
+					# draw the predicted face name on the image
+					cv2.rectangle(self.frame, (left, top), (right, bottom),
+						(0, 255, 0), 2)
+					
+				self.frame = imutils.resize(self.frame, width=640)
 				# OpenCV represents images in BGR order; however PIL
 				# represents images in RGB order, so we need to swap
 				# the channels, then convert to PIL and ImageTk format
 				image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
 				image = Image.fromarray(image)
 				image = ImageTk.PhotoImage(image)
+
+				
 
 
 				# if the panel is not None, we need to initialize it
