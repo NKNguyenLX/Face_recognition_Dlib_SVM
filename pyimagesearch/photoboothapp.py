@@ -101,6 +101,7 @@ class PhotoBoothApp:
 		# Start time
 		start = time.time()
 
+		self.label2.configure(text = "")
 		# grab the current timestamp and use it to construct the
 		# output path
 		ts = datetime.datetime.now()
@@ -125,7 +126,7 @@ class PhotoBoothApp:
 			pass
 
 		for i, c in enumerate(confidences):
-			if c <= 0.7:  # 0.5 is kept as threshold for known face.
+			if c <= 0.5:  # 0.5 is kept as threshold for known face.
 				persons[i] = "Unknown"
 		
 		# Update label
@@ -182,7 +183,8 @@ class PhotoBoothApp:
 				image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
 				image = Image.fromarray(image)
 				image = ImageTk.PhotoImage(image)
-		
+
+
 				# if the panel is not None, we need to initialize it
 				if self.panel is None:
 					self.panel = tki.Label(image=image)

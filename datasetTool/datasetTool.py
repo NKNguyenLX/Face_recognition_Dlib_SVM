@@ -17,7 +17,7 @@ camera = cv2.VideoCapture(args["video"])
 
 save_path = str(args["className"]) + "/"
 count = 0
-frame_drop = 4
+frame_drop = 1
 rotate_angle = 90
 
 while (camera.isOpened()):
