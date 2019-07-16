@@ -7,13 +7,20 @@ http://blog.dlib.net/2017/02/high-quality-face-recognition-with-deep.html<br/>
 https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78<br/>
 <br/>
 ## Installation
+Install Dlib with GPU support
 ```
-$ git clone https://github.com/davisking/dlib.git
-$ cd dlib
-$ mkdir build
-$ cd build
-$ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1
-$ cmake --build .
-$ cd ..
-$ python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build
+cd build
+cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1
+cmake --build .
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA
 ```
+Install face_recognition package and imutils
+```
+pip install face_recognition
+pip install imutils
+```
+
