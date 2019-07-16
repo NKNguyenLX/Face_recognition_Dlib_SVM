@@ -36,5 +36,5 @@ Run run_dataset.sh to generate image for recognition. Copy images folder to data
 ```
 ### Validate the result
 ```
-./t
+./test.sh
 ```
