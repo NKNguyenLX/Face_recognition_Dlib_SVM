@@ -1,4 +1,5 @@
 # Face_recognition_Dlib_SVM
+![alt text](https://github.com/NKNguyenLX/Face_recognition_Dlib_SVM/blob/master/Image.jpg)
 This work is based on Dlib face recognition and python face_recognition package. The image goes through the CNN model to produce bouding box and 128-d vector for each face in the image. The output is then feed in an RadialSvm model for classification and label the bouding box.<br/>
 <br/>
 For more information about this algorithm check out these website:<br/>
@@ -38,4 +39,4 @@ Run run_dataset.sh to generate image for recognition. Copy images folder to data
 ```
 ./test.sh
 ```
-You can view the result  a gui by uncomment *python svm_classifier_gui.py --output output* in test.sh 
+You can view the result with a gui by uncomment *python svm_classifier_gui.py --output output* in test.sh 
