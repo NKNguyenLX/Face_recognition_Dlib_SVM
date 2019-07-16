@@ -23,4 +23,18 @@ Install face_recognition package and imutils
 pip install face_recognition
 pip install imutils
 ```
-
+## Usage
+### Prepare data set
+Prepare video for face recognition and put in datasetTool/rawData<br/>
+Run run_dataset.sh to generate image for recognition. Copy images folder to dataset folder.
+```
+./datasetTool/run_dataset.sh
+```
+### Train the model
+```
+./train.sh
+```
+### Validate the result
+```
+./t
+```
