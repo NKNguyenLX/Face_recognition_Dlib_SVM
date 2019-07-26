@@ -1,5 +1,5 @@
 # Face_recognition_Dlib_SVM
-This work is based on Dlib face recognition and python face_recognition package. The image goes through the CNN model to produce bouding box and 128-d vector for each face in the image. The output is then fed in RadialSvm model for classification and label the bouding box.<br/>
+This work is based on Dlib face recognition and python face_recognition package. The image goes through the CNN model to produce bouding box and 128-d vector for each face in the image. The output is then fed into RadialSvm model for classification and label the bouding box.<br/>
 <br/>
 For more information about this algorithm check out these websites:<br/>
 https://www.pyimagesearch.com/2018/06/18/face-recognition-with-opencv-python-and-deep-learning/<br/>
