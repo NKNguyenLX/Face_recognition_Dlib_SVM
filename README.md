@@ -19,10 +19,13 @@ cmake --build .
 cd ..
 python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA
 ```
-Install face_recognition package and imutils
+Install scikit-learn, imutils and face_recognition package 
 ```
-pip install face_recognition
+pip install numpy
 pip install imutils
+pip install scipy
+pip install sklearn
+pip install face_recognition
 ```
 ## Usage
 ### Prepare data set
