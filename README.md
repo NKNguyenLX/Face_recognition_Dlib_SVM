@@ -43,3 +43,6 @@ Run run_dataset.sh to generate image for recognition. Copy images folder to data
 ./test.sh
 ```
 You can view the result with a GUI by uncomment *python svm_classifier_gui.py --output output* in test.sh 
+
+hihi
+
